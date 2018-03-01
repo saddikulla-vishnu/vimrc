@@ -75,6 +75,36 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 
 
 
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+
+
+
+
+
+" Let's save undo info!
+" if !isdirectory($HOME."/.vim")
+"     call mkdir($HOME."/.vim")
+" endif
+if !isdirectory($HOME."/.vim/undo")
+    call mkdir($HOME."/.vim/undo")
+endif
+if !isdirectory($HOME."/.vim/swap")
+    call mkdir($HOME."/.vim/swap")
+endif
+if !isdirectory($HOME."/.vim/backup")
+    call mkdir($HOME."/.vim/backup")
+endif
+
+
+
+
+
+" Fast saving
+nnoremap <leader>w :w<cr>
+
 " set completeopt-=preview
 syntax on
 set number
@@ -84,6 +114,7 @@ set cursorline
 colorscheme afterglow
 set previewheight=10
 set ignorecase
+set smartcase
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 " turn off search highlight
@@ -93,8 +124,31 @@ set ruler
 set path+=**
 nnoremap <LEADER>gtd :YcmCompleter GoTo<CR>
 nnoremap <LEADER>gtr :YcmCompleter GoToReferences<CR>
+nnoremap Y y$
 set wildmenu
+set history=1000
 " inoremap jj <ESC>
+
+
+set undofile
+set undodir=~/.vim/undo//
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+
+
+
+
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions-=T
+    set guioptions-=e
+    " set t_Co=256
+    " set guitablabel=%M\ %t
+endif
 
 
 
@@ -104,4 +158,41 @@ let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_goto_buffer_command = 'vertical-split'
 
 
+" CtrlP settings
 let g:ctrlp_cmd = 'CtrlPMixed'
+" let g:ctrlp_match_window = 'bottom,order:ttb'
+" let g:ctrlp_switch_buffer = 0
+" let g:ctrlp_working_path_mode = 0
+" let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Advanced Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Turn persistent undo on 
+"    means that you can undo even when you close a buffer/VIM
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" try
+"     set undodir=~/.vim/vim_runtime/temp_dirs/undodir
+"     set undofile
+" catch
+" endtry
+
+" Map auto complete of (, ", ', [
+" inoremap $1 ()<esc>i
+" inoremap $2 []<esc>i
+" inoremap $3 {}<esc>i
+" inoremap $4 {<esc>o}<esc>O
+" inoremap $q ''<esc>i
+" inoremap $e \""<esc>i
+
+
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Helper functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Returns true if paste mode is enabled
