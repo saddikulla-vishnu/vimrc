@@ -22,10 +22,19 @@ Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdtree'
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'rking/ag.vim' " Source Coder search Plugin
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'yggdroot/indentline'
+Plugin 'mbbill/undotree'
+Plugin 'airblade/vim-gitgutter'
+" Plugin 'junegunn/goyo.vim'
+Plugin 'wincent/command-t'
+" Plugin 'nathanaelkane/vim-indent-guides'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+" Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
 " Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
@@ -103,7 +112,7 @@ endif
 
 
 " Fast saving
-nnoremap <leader>w :w<cr>
+nnoremap <leader>w :w!<cr>
 
 " set completeopt-=preview
 syntax on
@@ -122,36 +131,88 @@ nnoremap <LEADER><ESC> :nohlsearch<CR>
 set laststatus=2
 set ruler
 set path+=**
-nnoremap <LEADER>gtd :YcmCompleter GoTo<CR>
-nnoremap <LEADER>gtr :YcmCompleter GoToReferences<CR>
+set lazyredraw          " redraw only when we need to.
+nnoremap <LEADER>gd :YcmCompleter GoTo<CR>
+nnoremap <LEADER>gr :YcmCompleter GoToReferences<CR>
+nnoremap <LEADER>t :term<CR>
 nnoremap Y y$
 set wildmenu
 set history=1000
-" inoremap jj <ESC>
+" Use spaces instead of tabs
+set expandtab
+" Be smart when using tabs ;)
+set smarttab
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+" Linebreak on 500 characters
+" set lbr
+" set tw=500
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+set listchars=tab:\|\ 
+set list
 
+
+set foldenable
+set foldlevelstart=10 " open most folds by default
+set foldminlines=10
+set foldnestmax=10 " 10 nested folds max
+set foldmethod=indent
+nnoremap <space> za
+
+
+
+" inoremap jj <ESC>
+" open ag.vim
+nnoremap <leader>a :Ag<space>
 
 set undofile
-set undodir=~/.vim/undo//
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swp//
+set undodir=~/.vim/undo/
+set backup
+set backupdir=~/.vim/backup/
+set writebackup
+set directory=~/.vim/swap/
 " move vertically by visual line
+" nnoremap j gj
 nnoremap j gj
 nnoremap k gk
-
-
-
+" Tab navigation like Firefox.
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
+" Buffer navigation like Firefox.
+nnoremap <C-b>   :bnext<CR>
+inoremap <C-b>   <Esc>:bnext<CR>i
+" Redraw vim screen
+nnoremap <LEADER><l> <C-l>
+" Window Split Switching
+nnoremap <C-l> <C-w>l
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
+nnoremap <C-h> <C-w>h
 
 
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
     set guioptions-=e
+    set guioptions-=L
+    set guioptions-=r
+    set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+    set guitablabel=%N/\ %t\ %M
     " set t_Co=256
-    " set guitablabel=%M\ %t
+    " set guifont=*
+    set anti guifont=Inconsolata-g\ for\ Powerline\ Medium\ 10
 endif
 
 
 
+let g:ycm_server_python_interpreter = '/usr/bin/python2' " change this according to the YcmRestartSerever Error
 let g:ycm_python_binary_path = '/usr/local/bin/python3.6'
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_min_num_of_chars_for_completion = 2
@@ -160,17 +221,32 @@ let g:ycm_goto_buffer_command = 'vertical-split'
 
 " CtrlP settings
 let g:ctrlp_cmd = 'CtrlPMixed'
-" let g:ctrlp_match_window = 'bottom,order:ttb'
-" let g:ctrlp_switch_buffer = 0
-" let g:ctrlp_working_path_mode = 0
-" let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_match_window = 'order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+" vim-airline settings
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_extensions = ['branch', 'tabline']
+let g:airline#extensions#tabline#tab_nr_type = 2
+
+" indentline settings
+" Vim
+let g:indentLine_char = '┆'
+
+
+
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Advanced Settings
+" => Advanced Settings 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Turn persistent undo on 
+" => Turn persistent undo on
 "    means that you can undo even when you close a buffer/VIM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " try
