@@ -209,8 +209,9 @@ if has("gui_running")
     set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
     " set guitablabel=%N/\ %t\ %M
     " set t_Co=256
-    " set guifont=*
-    set anti guifont=Inconsolata-g\ for\ Powerline\ Medium\ 10
+    set guifont=*
+    " set anti guifont=Inconsolata-g\ for\ Powerline\ Medium\ 10
+    set anti guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
 endif
 
 
@@ -231,6 +232,7 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " vim-airline settings
 let g:airline#extensions#tabline#enabled = 1
+" let g:airline_symbols_ascii = 1
 let g:airline_powerline_fonts = 1
 let g:airline_extensions = ['branch', 'tabline']
 let g:airline#extensions#tabline#tab_nr_type = 2
