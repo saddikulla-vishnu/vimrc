@@ -118,6 +118,9 @@ nnoremap <leader>w :w!<cr>
 syntax on
 set number
 set cursorline
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
 " colorscheme slate
 " colorscheme slate
 colorscheme afterglow
