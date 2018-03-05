@@ -209,7 +209,7 @@ if has("gui_running")
     set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
     " set guitablabel=%N/\ %t\ %M
     " set t_Co=256
-    set guifont=*
+    " set guifont=*
     " set anti guifont=Inconsolata-g\ for\ Powerline\ Medium\ 10
     set anti guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
 endif
