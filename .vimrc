@@ -215,6 +215,13 @@ if has("gui_running")
 endif
 
 
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+
 
 let g:ycm_server_python_interpreter = '/usr/bin/python2' " change this according to the YcmRestartSerever Error
 let g:ycm_python_binary_path = '/usr/local/bin/python3.6'
