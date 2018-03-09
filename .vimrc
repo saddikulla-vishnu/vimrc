@@ -112,12 +112,16 @@ endif
 
 
 " Fast saving
-nnoremap <leader>w :w!<cr>
+nnoremap <LEADER>w :w!<CR>
+nnoremap <LEADER>to :tabonly<CR>
+nnoremap <LEADER>b :b<space>
 
 " set completeopt-=preview
 syntax on
 set number
 set cursorline
+" Show commands you are executing
+set showcmd
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
@@ -192,12 +196,16 @@ inoremap <C-t>     <Esc>:tabnew<CR>
 nnoremap <C-b>   :bnext<CR>
 inoremap <C-b>   <Esc>:bnext<CR>i
 " Redraw vim screen
-nnoremap <LEADER><l> <C-l>
+nnoremap <LEADER>l <C-l>
 " Window Split Switching
 nnoremap <C-l> <C-w>l
 nnoremap <C-k> <C-w>k
 nnoremap <C-j> <C-w>j
 nnoremap <C-h> <C-w>h
+nnoremap <C-i> <C-o>
+nnoremap <C-o> <C-i>
+
+tnoremap <ESC><ESC> <C-\><C-n>
 
 
 " Set extra options when running in GUI mode
