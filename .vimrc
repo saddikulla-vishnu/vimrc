@@ -119,6 +119,7 @@ nnoremap <LEADER>b :b<space>
 " set completeopt-=preview
 syntax on
 set number
+set relativenumber
 set cursorline
 " Show commands you are executing
 set showcmd
@@ -138,7 +139,7 @@ nnoremap <LEADER><ESC> :nohlsearch<CR>
 set laststatus=2
 set ruler
 set path+=**
-set lazyredraw          " redraw only when we need to.
+" set lazyredraw          " redraw only when we need to.
 nnoremap <LEADER>gd :YcmCompleter GoTo<CR>
 nnoremap <LEADER>gr :YcmCompleter GoToReferences<CR>
 nnoremap <LEADER>t :term<CR>
