@@ -198,6 +198,8 @@ nnoremap <C-b>   :bnext<CR>
 inoremap <C-b>   <Esc>:bnext<CR>i
 " Redraw vim screen
 nnoremap <LEADER>l <C-l>
+" Toggle NerdTree
+nnoremap <LEADER>n :NERDTreeToggle<CR>
 " Window Split Switching
 nnoremap <C-l> <C-w>l
 nnoremap <C-k> <C-w>k
