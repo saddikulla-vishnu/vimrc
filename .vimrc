@@ -175,6 +175,7 @@ nnoremap <space> za
 " inoremap jj <ESC>
 " open ag.vim
 nnoremap <leader>a :Ag<space>
+nnoremap <leader>f :find<space>
 
 set undofile
 set undodir=~/.vim/undo/
