@@ -236,7 +236,7 @@ endif
 
 
 let g:ycm_server_python_interpreter = '/usr/bin/python2' " change this according to the YcmRestartSerever Error
-let g:ycm_python_binary_path = '/usr/local/bin/python3.6'
+let g:ycm_python_binary_path = 'python3.6'
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_goto_buffer_command = 'vertical-split'
