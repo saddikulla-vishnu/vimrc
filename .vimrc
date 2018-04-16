@@ -14,6 +14,10 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-repeat'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'SirVer/ultisnips'
@@ -28,6 +32,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'yggdroot/indentline'
 Plugin 'mbbill/undotree'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'vim-syntastic/syntastic'
 " Plugin 'junegunn/goyo.vim'
 Plugin 'wincent/command-t'
 " Plugin 'nathanaelkane/vim-indent-guides'
@@ -118,6 +124,7 @@ nnoremap <LEADER>b :b<space>
 
 " set completeopt-=preview
 syntax on
+syntax enable
 set number
 set relativenumber
 set cursorline
@@ -128,7 +135,9 @@ set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 " colorscheme slate
 " colorscheme slate
-colorscheme afterglow
+set background=dark
+colorscheme iceberg
+"colorscheme afterglow
 set previewheight=10
 set ignorecase
 set smartcase
@@ -159,7 +168,7 @@ set tabstop=4
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
-set listchars=tab:\|\ 
+set listchars=tab:\|\
 set list
 
 
@@ -230,7 +239,7 @@ endif
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 
@@ -260,13 +269,31 @@ let g:airline#extensions#tabline#tab_nr_type = 2
 " Vim
 let g:indentLine_char = '┆'
 
+" vim-autoformat settings
+" au BufWrite * :Autoformat
+noremap <F3> :Autoformat<CR>
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+let g:formatter_yapf_style = 'pep8'
+
+" syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 
 
 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Advanced Settings 
+" => Advanced Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
