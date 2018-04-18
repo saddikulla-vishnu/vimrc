@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/usr/share/vim/vim74/doc'
+let g:netrw_dirhist_2='scp://git@github.com//'
+let g:netrw_dirhist_3='scp://git@github.com//check/'
+let g:netrw_dirhist_4='scp://git@github.com/'
+let g:netrw_dirhist_5='scp://git@github.com/check/'
+let g:netrw_dirhist_6='scp://addikulla@localhost//'
+let g:netrw_dirhist_7='scp://addikulla@localhost:8080//'
+let g:netrw_dirhist_8='scp://addikulla@localhost:8000//'
+let g:netrw_dirhist_9='scp://git@github.com//'
