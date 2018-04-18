@@ -147,7 +147,7 @@ set hlsearch            " highlight matches
 nnoremap <LEADER><ESC> :nohlsearch<CR>
 set laststatus=2
 set ruler
-set path+=**
+set path+=.,,**
 " set lazyredraw          " redraw only when we need to.
 nnoremap <LEADER>gd :YcmCompleter GoTo<CR>
 nnoremap <LEADER>gr :YcmCompleter GoToReferences<CR>
@@ -197,24 +197,20 @@ set directory=~/.vim/swap/
 nnoremap j gj
 nnoremap k gk
 " Tab navigation like Firefox.
-nnoremap <C-S-tab> :tabprevious<CR>
-nnoremap <C-tab>   :tabnext<CR>
-nnoremap <C-t>     :tabnew<CR>
-inoremap <C-S-tab> <Esc>:tabprevious<CR>i
-inoremap <C-tab>   <Esc>:tabnext<CR>i
-inoremap <C-t>     <Esc>:tabnew<CR>
+nnoremap <C-h> :tabprevious<CR>
+nnoremap <C-l> :tabnext<CR>
+nnoremap <C-n> :tabnew<CR>
 " Buffer navigation like Firefox.
 nnoremap <C-b>   :bnext<CR>
-inoremap <C-b>   <Esc>:bnext<CR>i
 " Redraw vim screen
 nnoremap <LEADER>l <C-l>
 " Toggle NerdTree
 nnoremap <LEADER>n :NERDTreeToggle<CR>
 " Window Split Switching
-nnoremap <C-l> <C-w>l
-nnoremap <C-k> <C-w>k
-nnoremap <C-j> <C-w>j
-nnoremap <C-h> <C-w>h
+nnoremap <leader>l <C-w>l
+nnoremap <leader>k <C-w>k
+nnoremap <leader>j <C-w>j
+nnoremap <leader>h <C-w>h
 nnoremap <C-i> <C-o>
 nnoremap <C-o> <C-i>
 
@@ -277,6 +273,8 @@ let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 let g:formatter_yapf_style = 'pep8'
 
+
+
 " syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -286,7 +284,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
+let g:syntastic_loc_list_height = 3
 
 
 
